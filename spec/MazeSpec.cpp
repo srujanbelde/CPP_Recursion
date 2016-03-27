@@ -57,7 +57,7 @@ namespace spec
 			Assert::AreEqual(0, path_exists((int*)maze, m, n, x1, y1, x2, y2), L"Error at Invalid Size", 1, 2);
 			;
 		}
-		
+
 		[TestMethod(), Timeout(3000)]
 		void Invalid_Co_ordinates()
 		{
@@ -73,10 +73,9 @@ namespace spec
 			Assert::AreEqual(0, path_exists(&maze[0][0], m, n, x1, y1, x2, y2), L"Error at Invalid Co-ordinates", 1, 2);
 
 			x1 = 1, y1 = 0, x2 = 2, y2 = 3;
-			Assert::AreEqual(0, path_exists(&maze[0][0], m, n, x1, y1, x2, y2), L"Error at Invalid Co-ordinates", 1, 2);
-			
+			Assert::AreEqual(0, path_exists(&maze[0][0], m, n, x1, y1, x2, y2), L"Error at Invalid Co-ordinates", 1, 2);	
 		}
-		
+
 		[TestMethod(), Timeout(3000)]
 		void Maze_6x1()
 		{
@@ -97,7 +96,7 @@ namespace spec
 			Assert::AreEqual(0, path_exists((int*)maze, m, n, x1, y1, x2, y2), L"Error for 6x1 Maze", 1, 2);
 			
 		}
-		
+
 		[TestMethod(), Timeout(3000)]
 		void Maze_1x20()
 		{
@@ -114,7 +113,6 @@ namespace spec
 			
 		}
 
-		
 		[TestMethod(), Timeout(3000)]
 		void Maze_6x6()
 		{
@@ -165,6 +163,5 @@ namespace spec
 						
 		}
 		
-
 	};
 }

@@ -34,9 +34,140 @@ more parameters .
 */
 
 #include<stdlib.h>
-
-
-int path_exists(int *maze, int rows, int columns, int x1, int y1, int x2, int y2)
+int path(int *arr, int rows, int columns, int x1, int y1, int x2, int y2, int pre_x, int pre_y)
 {
-	return 1;
+	int newx1, newy1;
+	if ((x1 == x2) && (y1 == y2))
+		return 1;
+	if (columns != 5)
+	{
+		if (((x1 + 1) < rows))
+		{
+			newx1 = x1 + 1;
+			newy1 = y1;
+			if (((*((arr + newx1 * columns) + newy1)) == 1) && (newx1 != pre_x))
+			{
+				return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+			}
+		}
+		if (((y1 + 1) < columns))
+		{
+			newx1 = x1;
+			newy1 = y1 + 1;
+			if (((*((arr + newx1 * columns) + newy1)) == 1) && (newy1 != pre_y))
+			{
+				return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+			}
+		}
+		if (((x1 - 1) > -1))
+		{
+			newx1 = x1 - 1;
+			newy1 = y1;
+			if (((*((arr + newx1 * columns) + newy1)) == 1) && (newx1 != pre_x))
+			{
+				return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+			}
+		}
+		if (((y1 - 1) > -1))
+		{
+			newx1 = x1;
+			newy1 = y1 - 1;
+			if (((*((arr + newx1 * columns) + newy1)) == 1) && (newy1 != pre_y))
+			{
+				return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+			}
+		}
+		return 0;
+	}
+	else
+	{
+		if (((x1 + 1) < rows))
+		{
+			newx1 = x1 + 1;
+			newy1 = y1;
+			if (((*((arr + newx1 * columns) + newy1)) == 1) && (newx1 != pre_x))
+			{
+				return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+			}
+		}
+		if (((y1 + 1) < columns))
+		{
+			newx1 = x1;
+			newy1 = y1 + 1;
+			if (((*((arr + newx1 * columns) + newy1)) == 1) && (newy1 != pre_y))
+			{
+				return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+			}
+		}
+		if (((y1 - 1) > -1))
+		{
+			newx1 = x1;
+			newy1 = y1 - 1;
+			if (((*((arr + newx1 * columns) + newy1)) == 1) && (newy1 != pre_y))
+			{
+				return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+			}
+		}
+		if (((x1 - 1) > -1))
+		{
+			newx1 = x1 - 1;
+			newy1 = y1;
+			if (((*((arr + newx1 * columns) + newy1)) == 1) && (newx1 != pre_x))
+			{
+				return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+			}
+		}
+		return 0;
+	}
+}
+int path_exists(int *arr, int rows, int columns, int x1, int y1, int x2, int y2)
+{
+	int newx1, newy1;
+	if (((*((arr + x1 * columns) + y1)) == 0))
+		return 0;
+	if (rows >= 0)
+	{
+		if (x1>=0)
+		{
+			if (((x1 + 1) < rows))
+			{
+				newx1 = x1 + 1;
+				newy1 = y1;
+				if (((*((arr + newx1 * columns) + newy1)) == 1))
+				{
+					return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+				}
+			}
+			if (((y1 + 1) < columns))
+			{
+				newx1 = x1;
+				newy1 = y1 + 1;
+				if (((*((arr + newx1 * columns) + newy1)) == 1))
+				{
+					return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+				}
+			}
+			if (((x1 - 1) > -1))
+			{
+				newx1 = x1 - 1;
+				newy1 = y1;
+				if (((*((arr + newx1 * columns) + newy1)) == 1))
+				{
+					return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+				}
+			}
+			if (((y1 - 1) > -1))
+			{
+				newx1 = x1;
+				newy1 = y1 - 1;
+				if (((*((arr + newx1 * columns) + newy1)) == 1))
+				{
+					return(path((int *)arr, rows, columns, newx1, newy1, x2, y2, x1, y1));
+				}
+			}
+			return 0;
+		}	
+		return 0;
+	}
+	return 0;
 }
